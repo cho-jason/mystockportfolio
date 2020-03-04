@@ -3,6 +3,7 @@ const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const path = require('path')
+const db = require('../db')
 const PORT = process.env.PORT || 3001
 
 // Middleware
@@ -26,9 +27,11 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || 'Internal server error.')
 })
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}
+db.sync().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}
 
-  http://localhost:${PORT}
-  `)
+    http://localhost:${PORT}
+    `)
+  })
 })
