@@ -6,6 +6,9 @@ const path = require('path')
 const db = require('../db')
 const PORT = process.env.PORT || 3001
 
+// Load secets if non-production environments
+if (process.env.NODE_ENV !== 'production') require('../secrets')
+
 // Middleware
 app.use(morgan('dev'))
 app.use(express.static(path.join(__dirname, '../client/build')))
