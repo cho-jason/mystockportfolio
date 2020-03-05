@@ -1,3 +1,8 @@
 const User = require('./user')
+const Stock = require('./stock')
 
-module.exports = { User }
+// ASSOCIATIONS
+Stock.belongsTo(User)
+User.hasMany(Stock)
+
+module.exports = { User, Stock }
