@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const fetch = require('node-fetch')
+const axios = require('axios')
 const { User, Stock, Transaction } = require('../../db/models')
 
 // GET ROUTES
@@ -31,16 +31,16 @@ router.post('/', async (req, res, next) => {
     const userId = parseInt(req.body.userId)
     const API_KEY = process.env.IEX_API_KEY
 
-    const stockData = await fetch(
-      `https://cloud.iexapis.com/stable/stock/${symbol}/quote?token=${API_KEY}`
-    )
-      .then(iexRes => iexRes.json())
+    const stock = await axios
+      .get(
+        `https://cloud.iexapis.com/stable/stock/${symbol}/quote?token=${API_KEY}`
+      )
       .catch(err => {
         console.log(err.message)
         console.log(err.stack)
         res.status(400).send(`Invalid ticker symbol: ${symbol}`)
       })
-
+    const stockData = stock.data
     if (stockData) {
       // Note: stockData.latestPrice is in dollars
       const totalCost = shares * stockData.latestPrice * 100
