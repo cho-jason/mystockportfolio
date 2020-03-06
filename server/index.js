@@ -50,6 +50,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 // Routes
+app.use('/auth', require('./auth'))
 app.use('/api', require('./api'))
 
 // Send HTML file for our SPA
