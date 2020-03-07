@@ -37,7 +37,7 @@ const User = db.define('user', {
 
 // INSTANCE METHODS
 User.prototype.isPasswordCorrect = function(passwordInput) {
-  return User.encryptPassword(passwordInput, this.getSalt()) === this.password()
+  return User.encryptPassword(passwordInput, this.salt()) === this.password()
 }
 
 // CLASS METHODS
