@@ -22,10 +22,10 @@ passport.serializeUser((user, done) => {
 })
 passport.deserializeUser(async (userId, done) => {
   try {
-    const user = await db.models.user.findByPK(userId)
+    const user = await db.models.user.findByPk(userId)
     done(null, user)
   } catch (err) {
-    next(err)
+    done(err)
   }
 })
 
