@@ -74,6 +74,9 @@ router.post('/', async (req, res, next) => {
       user.balance = user.balance - totalCost
       await user.save()
 
+      // 4. Add userId to response transaction obj
+      transaction.userId = user.id
+
       res.status(201).json(transaction)
     }
   } catch (err) {
