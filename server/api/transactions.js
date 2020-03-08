@@ -25,17 +25,17 @@ router.get('/:id', async (req, res, next) => {
 // POST ROUTES
 router.post('/', async (req, res, next) => {
   const symbol = req.body.symbol
-  const shares = parseInt(req.body.shares)
-  const userId = parseInt(req.body.userId)
+  const shares = req.body.shares
+  const userId = req.body.userId
   const API_KEY = process.env.IEX_API_KEY
 
   try {
     const stock = await axios.get(
       `https://cloud.iexapis.com/stable/stock/${symbol}/quote?token=${API_KEY}`
     )
-    const stockPrice = parseInt(stock.data.latestPrice)
-    // Note: stockPrice is price per share in dollars
-    const totalCost = shares * stockPrice * 100
+    // Note: stockPrice is price per share in pennies
+    const stockPrice = stock.data.latestPrice * 100
+    const totalCost = shares * stockPrice
     // Note: user.balance is in pennies
     let user = await User.findByPk(userId)
 
@@ -48,7 +48,7 @@ router.post('/', async (req, res, next) => {
       // 1. Create new transaction
       const transaction = await Transaction.create({
         stockSymbol: symbol,
-        pricePerShare: stockPrice * 100,
+        pricePerShare: stockPrice,
         shares
       })
       await user.addTransaction(transaction)
@@ -66,6 +66,7 @@ router.post('/', async (req, res, next) => {
         await user.addStock(purchasedStock)
       } else {
         purchasedStock.shares = purchasedStock.shares + shares
+        console.log('SHARES:', purchasedStock.shares)
         await purchasedStock.save()
       }
 
