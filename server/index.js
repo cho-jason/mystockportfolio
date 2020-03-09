@@ -55,7 +55,8 @@ app.use('/api', require('./api'))
 
 // Send HTML file for our SPA
 app.get('*', (req, res) => {
-  res.sendFile(path.join, '../client/build/index.html')
+  console.log('FILE SENT!!!')
+  res.sendFile(path.join(__dirname, '../client/build/index.html'))
 })
 
 // Error Handling
