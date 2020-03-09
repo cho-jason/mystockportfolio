@@ -14,10 +14,9 @@ const storeStocks = stocks => ({
   stocks
 })
 
-export const addStock = (symbol, shares) => ({
+export const addStock = stock => ({
   type: ADD_STOCK,
-  symbol,
-  shares
+  stock
 })
 
 // THUNK CREATORS
@@ -63,10 +62,10 @@ const stocksReducer = (state = defaultStocks, action) => {
       let newStock = true
       let stocks = state.map(stock => {
         // Update number of shares if stock is in portfolio
-        if (stock.symbol === action.symbol) {
+        if (stock.symbol === action.stock.symbol) {
           newStock = false
-          let shares = stock.shares + action.shares
-          return { ...stock, shares }
+          let shares = stock.shares + action.stock.shares
+          return { ...stock, shares, change: action.stock.change }
           // Otherwise just return stock
         } else {
           return stock
@@ -74,10 +73,7 @@ const stocksReducer = (state = defaultStocks, action) => {
       })
       //Add stock to portfolio if stock is new
       if (newStock) {
-        stocks.push({
-          symbol: action.symbol,
-          shares: action.shares
-        })
+        stocks.push(action.stock)
       }
       return stocks
     default:

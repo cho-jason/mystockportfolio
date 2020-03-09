@@ -37,14 +37,21 @@ export const getTransactions = userId => async dispatch => {
 
 export const purchaseStock = (symbol, shares, userId) => async dispatch => {
   try {
-    const res = await axios.post(`/api/transactions`, {
+    let res = await axios.post(`api/transactions`, {
       symbol,
       shares,
       userId
     })
     const totalCost = res.data.pricePerShare * shares
     dispatch(addTransaction(res.data))
-    dispatch(addStock(symbol, shares))
+    res = await axios.get(`api/stocks/${symbol}`)
+    const stock = {
+      symbol,
+      shares,
+      change: res.data.change,
+      latestPrice: res.data.latestPrice
+    }
+    dispatch(addStock(stock))
     dispatch(subtractCost(totalCost))
   } catch (err) {
     if (err.response.status === 400 || err.response.status === 404) {
