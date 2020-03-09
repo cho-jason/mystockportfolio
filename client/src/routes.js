@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
-import { LoginForm, Home } from './components'
+import { LoginForm, Home, Transactions } from './components'
 import { getUser } from './store'
 
 const Routes = ({ isLoggedIn, loadInitialData }) => {
@@ -13,8 +13,15 @@ const Routes = ({ isLoggedIn, loadInitialData }) => {
   return (
     <Switch>
       <Route path="/login" component={LoginForm} />
-      {isLoggedIn && <Route path="/home" component={Home} />}
-      <Route component={isLoggedIn ? Home : LoginForm} />
+      {isLoggedIn ? (
+        <Switch>
+          <Route path="/home" component={Home} />
+          <Route path="/transactions" component={Transactions} />
+          <Route component={Home} />
+        </Switch>
+      ) : (
+        <Route component={LoginForm} />
+      )}
     </Switch>
   )
 }
