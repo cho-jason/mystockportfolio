@@ -6,10 +6,12 @@ const defaultUser = {}
 // ACTION TYPES
 const STORE_USER = 'STORE_USER'
 const REMOVE_USER = 'REMOVE_USER'
+const SUBTRACT_COST = 'SUBTRACT_COST'
 
 // ACTION CREATORS
 const storeUser = user => ({ type: STORE_USER, user })
 const removeUser = () => ({ type: REMOVE_USER })
+export const subtractCost = cost => ({ type: SUBTRACT_COST, cost })
 
 // THUNK CREATORS
 export const getUser = () => async dispatch => {
@@ -60,6 +62,8 @@ const userReducer = (state = defaultUser, action) => {
   switch (action.type) {
     case STORE_USER:
       return action.user
+    case SUBTRACT_COST:
+      return { ...state, balance: state.balance - action.cost }
     case REMOVE_USER:
       return defaultUser
     default:
