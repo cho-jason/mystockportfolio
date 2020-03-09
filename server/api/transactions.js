@@ -34,7 +34,7 @@ router.post('/', async (req, res, next) => {
       `https://cloud.iexapis.com/stable/stock/${symbol}/quote?token=${API_KEY}`
     )
     // Note: stockPrice is price per share in pennies
-    const stockPrice = stock.data.latestPrice * 100
+    const stockPrice = Math.round(stock.data.latestPrice * 100)
     const totalCost = shares * stockPrice
     // Note: user.balance is in pennies
     let user = await User.findByPk(userId)
@@ -66,7 +66,6 @@ router.post('/', async (req, res, next) => {
         await user.addStock(purchasedStock)
       } else {
         purchasedStock.shares = purchasedStock.shares + shares
-        console.log('SHARES:', purchasedStock.shares)
         await purchasedStock.save()
       }
 
@@ -80,7 +79,7 @@ router.post('/', async (req, res, next) => {
       res.status(201).json(transaction)
     }
   } catch (err) {
-    if (err.response.status === 404) {
+    if (err.response && err.response.status === 404) {
       res.status(404).send(`Invalid ticker symbol: ${symbol}.`)
     } else {
       next(err)
