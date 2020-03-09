@@ -10,7 +10,7 @@ const BuyForm = ({ user, purchaseStock }) => {
   const handleSubmit = evt => {
     evt.preventDefault()
     if (shares > 0) {
-      purchaseStock(symbol, parseInt(shares), user.id)
+      purchaseStock(symbol.toUpperCase(), parseInt(shares), user.id)
     }
   }
 
