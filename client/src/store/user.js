@@ -2,7 +2,7 @@ import axios from 'axios'
 import { createBrowserHistory } from 'history'
 
 const history = createBrowserHistory()
-
+console.log('HISTORY', history)
 // INITIAL STATE
 const defaultUser = {}
 
@@ -26,20 +26,20 @@ export const getUser = () => async dispatch => {
   }
 }
 
-export const login = (email, password) => async dispatch => {
+export const login = (email, password, push) => async dispatch => {
   try {
     const res = await axios.post('/auth/login', {
       email,
       password
     })
     dispatch(storeUser(res.data))
-    history.push('/home')
+    push() // Used to push to a route
   } catch (err) {
     console.error(err)
   }
 }
 
-export const signup = (name, email, password) => async dispatch => {
+export const signup = (name, email, password, push) => async dispatch => {
   try {
     const res = await axios.post('/auth/signup', {
       name,
@@ -47,7 +47,7 @@ export const signup = (name, email, password) => async dispatch => {
       password
     })
     dispatch(storeUser(res.data))
-    history.push('/home')
+    push() // Used to push to a route
   } catch (err) {
     console.error(err)
   }

@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { signup } from '../store'
 
-const RegisterForm = ({ handleSubmit }) => {
+const RegisterForm = ({ signup }) => {
+  const history = useHistory()
+
   // STATE
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const handleSubmit = evt => {
+    evt.preventDefault()
+    signup(name, email, password, () => history.push('/home'))
+  }
 
   return (
     <div>
@@ -49,12 +57,8 @@ const RegisterForm = ({ handleSubmit }) => {
 }
 
 const mapDispatch = dispatch => ({
-  handleSubmit(evt) {
-    evt.preventDefault()
-    const name = evt.target.name.value
-    const email = evt.target.email.value
-    const password = evt.target.password.value
-    dispatch(signup(name, email, password))
+  signup: (name, email, password, push) => {
+    dispatch(signup(name, email, password, push))
   }
 })
 

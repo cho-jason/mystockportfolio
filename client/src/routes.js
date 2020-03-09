@@ -8,16 +8,16 @@ const Routes = ({ isLoggedIn, loadInitialData }) => {
   // EFFECTS
   useEffect(() => {
     loadInitialData()
-  }, [loadInitialData])
+  }, [])
 
   return (
     <Switch>
-      <Route path="/login" component={LoginForm} />
-      <Route path="/register" component={RegisterForm} />
+      <Route exact path="/login" component={LoginForm} />
+      <Route exact path="/register" component={RegisterForm} />
       {isLoggedIn ? (
         <Switch>
-          <Route path="/home" component={Home} />
-          <Route path="/transactions" component={Transactions} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/transactions" component={Transactions} />
           <Route component={Home} />
         </Switch>
       ) : (
