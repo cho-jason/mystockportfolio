@@ -1,4 +1,7 @@
 import axios from 'axios'
+import { createBrowserHistory } from 'history'
+
+const history = createBrowserHistory()
 
 // INITIAL STATE
 const defaultUser = {}
@@ -30,6 +33,7 @@ export const login = (email, password) => async dispatch => {
       password
     })
     dispatch(storeUser(res.data))
+    history.push('/portfolio')
   } catch (err) {
     console.error(err)
   }

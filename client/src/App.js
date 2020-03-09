@@ -1,11 +1,11 @@
 import React from 'react'
-import { LoginForm } from './components'
+import Routes from './routes'
 import './App.css'
 
 function App() {
   return (
     <div className="App">
-      <LoginForm />
+      <Routes />
     </div>
   )
 }
