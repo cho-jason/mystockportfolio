@@ -33,7 +33,7 @@ export const login = (email, password) => async dispatch => {
       password
     })
     dispatch(storeUser(res.data))
-    history.push('/portfolio')
+    history.push('/home')
   } catch (err) {
     console.error(err)
   }
