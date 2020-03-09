@@ -55,7 +55,7 @@ router.post('/', async (req, res, next) => {
 
       // 2. Add stock to portfolio / update stock shares in portfolio
       let purchasedStock = await Stock.findOne({
-        where: { userId }
+        where: { userId, symbol }
       })
 
       if (!purchasedStock) {
