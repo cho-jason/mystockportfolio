@@ -17,10 +17,10 @@ const RegisterForm = ({ signup }) => {
   }
 
   return (
-    <div>
+    <div id="register">
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="input">
           <label htmlFor="name">Name</label>
           <input
             name="name"
@@ -30,7 +30,7 @@ const RegisterForm = ({ signup }) => {
             required
           />
         </div>
-        <div>
+        <div className="input">
           <label htmlFor="email">Email</label>
           <input
             name="email"
@@ -40,7 +40,7 @@ const RegisterForm = ({ signup }) => {
             required
           />
         </div>
-        <div>
+        <div className="input">
           <label htmlFor="password">Password</label>
           <input
             name="password"
@@ -50,7 +50,9 @@ const RegisterForm = ({ signup }) => {
             required
           />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" className="button">
+          Register
+        </button>
       </form>
     </div>
   )

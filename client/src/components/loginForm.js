@@ -16,10 +16,10 @@ const LoginForm = ({ login }) => {
   }
 
   return (
-    <div>
+    <div id="login">
       <h2>Log In</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="input">
           <label htmlFor="email">Email</label>
           <input
             name="email"
@@ -29,7 +29,7 @@ const LoginForm = ({ login }) => {
             required
           />
         </div>
-        <div>
+        <div className="input">
           <label htmlFor="password">Password</label>
           <input
             name="password"
