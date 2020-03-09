@@ -28,7 +28,7 @@ export const getStocks = userId => async dispatch => {
     // Update each stock with open and latestPrice
     await asyncForEach(stocks, async (stock, idx) => {
       res = await axios.get(`/api/stocks/${stock.symbol}`)
-      stocks[idx].open = Math.round(res.data.open * 100)
+      stocks[idx].change = res.data.change
       stocks[idx].latestPrice = Math.round(res.data.latestPrice * 100)
     })
     dispatch(storeStocks(stocks))

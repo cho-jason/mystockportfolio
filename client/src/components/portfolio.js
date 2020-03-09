@@ -13,11 +13,11 @@ const Portfolio = ({ userId, stocks, getStocks }) => {
       <h2>Portfolio</h2>
       {stocks.map(stock => {
         return (
-          <div key={stock.id}>
+          <div key={stock.symbol}>
             {stock.symbol}: shares: {stock.shares} | price/share: $
             {stock.latestPrice / 100} | totalPrice: $
-            {(stock.shares * stock.latestPrice) / 100} | Open Price: $
-            {stock.open / 100}
+            {(stock.shares * stock.latestPrice) / 100} | Change:
+            {stock.change}%
           </div>
         )
       })}
