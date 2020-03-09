@@ -49,7 +49,7 @@ export const purchaseStock = (symbol, shares, userId) => async dispatch => {
       symbol,
       shares,
       change: res.data.change,
-      latestPrice: res.data.latestPrice
+      latestPrice: Math.round(res.data.latestPrice * 100)
     }
     dispatch(addStock(stock))
     dispatch(subtractCost(totalCost))
