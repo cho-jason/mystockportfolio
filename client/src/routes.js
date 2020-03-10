@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import {
   LoginForm,
   RegisterForm,
@@ -19,10 +19,10 @@ const Routes = ({ isLoggedIn, loadInitialData }) => {
   return (
     <Switch>
       <Route exact path="/">
-        {isLoggedIn ? <Home /> : <Redirect to="/login" />}
+        {isLoggedIn ? <Home /> : <Route component={LoginForm} />}
       </Route>
       <Route exact path="/transactions">
-        {isLoggedIn ? <Transactions /> : <Redirect to="/login" />}
+        {isLoggedIn ? <Transactions /> : <Route component={LoginForm} />}
       </Route>
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/register" component={RegisterForm} />
