@@ -140,6 +140,21 @@ a {
   justify-content: space-between;
 }
 
+#portfolio > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#portfolio > div > div > p {
+  align-self: flex-start;
+  margin: 1em 0 0;
+}
+
+.stock-info {
+  margin: 0.5em 0 1em;
+}
+
 .increase {
   color: green;
 }
