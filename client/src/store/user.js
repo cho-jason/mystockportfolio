@@ -32,7 +32,11 @@ export const login = (email, password, push) => async dispatch => {
     dispatch(storeUser(res.data))
     push() // Used to push to a route
   } catch (err) {
-    console.error(err)
+    if (err.response.status === 401) {
+      dispatch(storeUser({ errorMessage: err.response.data }))
+    } else {
+      console.error(err)
+    }
   }
 }
 
@@ -46,7 +50,11 @@ export const signup = (name, email, password, push) => async dispatch => {
     dispatch(storeUser(res.data))
     push() // Used to push to a route
   } catch (err) {
-    console.error(err)
+    if (err.response.status === 401) {
+      dispatch(storeUser({ errorMessage: err.response.data }))
+    } else {
+      console.error(err)
+    }
   }
 }
 

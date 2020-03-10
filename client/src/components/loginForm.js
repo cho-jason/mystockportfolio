@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { login } from '../store'
 
-const LoginForm = ({ login }) => {
+const LoginForm = ({ errorMessage, login }) => {
   const history = useHistory()
 
   // STATE
@@ -41,9 +41,14 @@ const LoginForm = ({ login }) => {
         </div>
         <button type="submit">Sign In</button>
       </form>
+      <p className="error">{errorMessage}</p>
     </div>
   )
 }
+
+const mapState = state => ({
+  errorMessage: state.user.errorMessage
+})
 
 const mapDispatch = dispatch => ({
   login: (email, password, push) => {
@@ -51,4 +56,4 @@ const mapDispatch = dispatch => ({
   }
 })
 
-export default connect(null, mapDispatch)(LoginForm)
+export default connect(mapState, mapDispatch)(LoginForm)

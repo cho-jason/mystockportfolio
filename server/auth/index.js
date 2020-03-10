@@ -43,7 +43,11 @@ router.post('/signup', async (req, res, next) => {
       }
     })
   } catch (err) {
-    next(err)
+    if (err.name === 'SequelizeUniqueConstraintError') {
+      res.status(401).send('Invalid Email. Use a different email.')
+    } else {
+      next(err)
+    }
   }
 })
 
