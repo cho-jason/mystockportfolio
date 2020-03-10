@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getTransactions } from '../store'
+import { getDate } from '../util'
 
 const Transactions = ({ userId, transactions, getTransactions }) => {
   // EFFECTS
@@ -9,13 +10,26 @@ const Transactions = ({ userId, transactions, getTransactions }) => {
   }, [])
 
   return (
-    <div>
+    <div id="transactions">
       <h2>Transactions</h2>
       {transactions.map(transaction => {
-        const { id, stockSymbol, shares, pricePerShare, date } = transaction
+        const { id, stockSymbol, shares, pricePerShare } = transaction
+
+        const date = getDate(new Date(transaction.date))
+
         return (
           <div key={id}>
-            {date} | {stockSymbol}: {shares} shares @ {pricePerShare}
+            <small>{date}</small>
+            <div className="transaction">
+              <p>
+                <strong>{stockSymbol}</strong> - {shares} shares @ $
+                {(pricePerShare / 100).toFixed(2)} / share
+              </p>
+              <p>
+                <strong>Total:</strong> $
+                {((shares * pricePerShare) / 100).toFixed(2)}
+              </p>
+            </div>
           </div>
         )
       })}
