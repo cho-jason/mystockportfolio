@@ -11,6 +11,7 @@ const Navbar = ({ isLoggedIn, logout }) => {
 
   return (
     <nav>
+      <h1>My Stock Portfolio</h1>
       {isLoggedIn ? (
         <div>
           <Link to="/home">Home</Link>
