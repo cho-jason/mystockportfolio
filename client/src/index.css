@@ -80,11 +80,59 @@ nav {
 }
 
 nav > div {
-  width: 30%;
   display: flex;
   justify-content: flex-end;
 }
 
 nav > div > a {
   padding: 0em 1em;
+}
+
+/* Home */
+#home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1.5em 0em;
+}
+
+/* Portfolio */
+#portfolio {
+  flex-grow: 1;
+  padding: 0em 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#portfolio > div {
+  font-size: 1.1em;
+  padding: 0.5em;
+  border-color: #d0d0cf;
+  border-width: thin;
+  border-style: none none solid;
+  display: flex;
+  justify-content: space-between;
+}
+
+.increase {
+  color: green;
+}
+
+.decrease {
+  color: red;
+}
+
+.equal {
+  color: gray;
+}
+
+/* BuyForm */
+#buy {
+  flex-grow: 1;
+  padding: 0em 5em;
+}
+
+#buy > p {
+  font-size: 1.1em;
 }

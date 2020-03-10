@@ -15,13 +15,13 @@ const BuyForm = ({ user, purchaseStock }) => {
   }
 
   return (
-    <div>
+    <div id="buy">
       <h2>Buy Stock</h2>
       <p>
         <strong>Available Balance:</strong> ${user.balance / 100}
       </p>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="input">
           <label htmlFor="symbol">Ticker Symbol</label>
           <input
             name="symbol"
@@ -31,7 +31,7 @@ const BuyForm = ({ user, purchaseStock }) => {
             required
           />
         </div>
-        <div>
+        <div className="input">
           <label htmlFor="shares">Shares</label>
           <input
             name="shares"

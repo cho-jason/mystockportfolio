@@ -3,7 +3,7 @@ import { Portfolio, BuyForm } from '.'
 
 const Home = () => {
   return (
-    <div>
+    <div id="home">
       <Portfolio />
       <BuyForm />
     </div>

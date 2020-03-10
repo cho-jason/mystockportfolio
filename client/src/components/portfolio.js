@@ -9,15 +9,26 @@ const Portfolio = ({ userId, stocks, getStocks }) => {
   }, [])
 
   return (
-    <div>
+    <div id="portfolio">
       <h2>Portfolio</h2>
       {stocks.map(stock => {
+        let stockStatus
+        if (stock.change > 0) {
+          stockStatus = 'increase'
+        } else if (stock.change < 0) {
+          stockStatus = 'decrease'
+        } else {
+          stockStatus = 'equal'
+        }
+
         return (
-          <div key={stock.symbol}>
-            {stock.symbol}: shares: {stock.shares} | price/share: $
-            {stock.latestPrice / 100} | totalPrice: $
-            {(stock.shares * stock.latestPrice) / 100} | Change:
-            {stock.change}%
+          <div key={stock.symbol} className={stockStatus}>
+            <p>
+              <strong>{stock.symbol}</strong> - {stock.shares} share
+              {stock.shares > 1 && 's'} @ $
+              {(stock.latestPrice / 100).toFixed(2)} / share
+            </p>
+            <p>${((stock.shares * stock.latestPrice) / 100).toFixed(2)}</p>
           </div>
         )
       })}
