@@ -20,15 +20,6 @@ const Routes = ({ isLoggedIn, loadInitialData }) => {
       </Route>
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/register" component={RegisterForm} />
-      {/* {isLoggedIn ? (
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/transactions" component={Transactions} />
-          <Route component={Home} />
-        </Switch>
-      ) : (
-        <Route component={LoginForm} />
-      )} */}
     </Switch>
   )
 }
