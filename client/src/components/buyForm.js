@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { purchaseStock } from '../store'
+import { purchaseStock, stopTransaction } from '../store'
 
-const BuyForm = ({ user, purchaseStock }) => {
+const BuyForm = ({ user, lastTransaction, purchaseStock, stopTransaction }) => {
   // STATE
   const [symbol, setSymbol] = useState('')
   const [shares, setShares] = useState(0)
@@ -11,6 +11,16 @@ const BuyForm = ({ user, purchaseStock }) => {
     evt.preventDefault()
     if (shares > 0 && shares % 1 === 0) {
       purchaseStock(symbol.toUpperCase(), parseInt(shares), user.id)
+      setSymbol('')
+      setShares(0)
+    } else {
+      if (shares <= 0) {
+        stopTransaction({ errorMessage: 'Shares must be greater than 0.' })
+      } else {
+        stopTransaction({
+          errorMessage: 'Must buy whole shares (no partial shares).'
+        })
+      }
     }
   }
 
@@ -42,19 +52,22 @@ const BuyForm = ({ user, purchaseStock }) => {
           />
         </div>
         <button type="submit">Buy</button>
+        <p className="error">{lastTransaction.errorMessage}</p>
       </form>
     </div>
   )
 }
 
 const mapState = state => ({
-  user: state.user
+  user: state.user,
+  lastTransaction: state.transactions.last
 })
 
 const mapDispatch = dispatch => ({
   purchaseStock: (symbol, shares, userId) => {
     dispatch(purchaseStock(symbol, shares, userId))
-  }
+  },
+  stopTransaction: error => dispatch(stopTransaction(error))
 })
 
 export default connect(mapState, mapDispatch)(BuyForm)
