@@ -14,10 +14,10 @@ const Navbar = ({ isLoggedIn, logout }) => {
       <h1>My Stock Portfolio</h1>
       {isLoggedIn ? (
         <div>
-          <NavLink to="/" activeClassName="selected">
+          <NavLink exact to="/" activeClassName="selected">
             Home
           </NavLink>
-          <NavLink to="/transactions" activeClassName="selected">
+          <NavLink exact to="/transactions" activeClassName="selected">
             Transactions
           </NavLink>
           <button className="link-button" onClick={handleClick}>
@@ -26,10 +26,10 @@ const Navbar = ({ isLoggedIn, logout }) => {
         </div>
       ) : (
         <div>
-          <NavLink to="/login" activeClassName="selected">
+          <NavLink exact to="/login" activeClassName="selected">
             Login
           </NavLink>
-          <NavLink to="/register" activeClassName="selected">
+          <NavLink exact to="/register" activeClassName="selected">
             Register
           </NavLink>
         </div>
