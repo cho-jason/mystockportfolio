@@ -22,8 +22,9 @@ const Transactions = ({ userId, transactions, getTransactions }) => {
             <small>{date}</small>
             <div className="transaction">
               <p>
-                <strong>{stockSymbol}</strong> - {shares} shares @ $
-                {(pricePerShare / 100).toFixed(2)} / share
+                <strong>{stockSymbol}</strong> - {shares} share
+                {shares > 1 ? 's' : ''} @ ${(pricePerShare / 100).toFixed(2)} /
+                share
               </p>
               <p>
                 <strong>Total:</strong> $
