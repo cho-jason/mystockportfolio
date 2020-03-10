@@ -18,7 +18,6 @@ const RegisterForm = ({ signup }) => {
 
   return (
     <div id="register">
-      <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <div className="input">
           <label htmlFor="name">Name</label>
