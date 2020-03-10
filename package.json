@@ -8,7 +8,8 @@
     "start": "node server",
     "start-dev": "concurrently \"NODE_ENV='development'\" \"npm run server\" \"npm run client\"",
     "server": "nodemon server",
-    "client": "cd client && npm start"
+    "client": "cd client && npm start",
+    "build-client": "cd client && npm run build"
   },
   "author": "Jason Cho",
   "license": "MIT",
