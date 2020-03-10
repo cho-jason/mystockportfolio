@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getStocks } from '../store'
 
@@ -6,7 +6,7 @@ const Portfolio = ({ userId, stocks, getStocks }) => {
   // EFFECTS
   useEffect(() => {
     getStocks(userId)
-  }, [])
+  }, [getStocks, userId])
 
   return (
     <div id="portfolio">

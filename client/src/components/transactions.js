@@ -7,7 +7,7 @@ const Transactions = ({ userId, transactions, getTransactions }) => {
   // EFFECTS
   useEffect(() => {
     getTransactions(userId)
-  }, [])
+  }, [getTransactions, userId])
 
   return (
     <div id="transactions">

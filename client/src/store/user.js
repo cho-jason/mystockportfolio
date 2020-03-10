@@ -1,8 +1,5 @@
 import axios from 'axios'
-import { createBrowserHistory } from 'history'
 
-const history = createBrowserHistory()
-console.log('HISTORY', history)
 // INITIAL STATE
 const defaultUser = {}
 

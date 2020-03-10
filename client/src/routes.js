@@ -14,7 +14,7 @@ const Routes = ({ isLoggedIn, loadInitialData }) => {
   // EFFECTS
   useEffect(() => {
     loadInitialData()
-  }, [])
+  })
 
   return (
     <Switch>
