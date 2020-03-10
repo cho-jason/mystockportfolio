@@ -13,7 +13,7 @@ const RegisterForm = ({ signup }) => {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    signup(name, email, password, () => history.push('/home'))
+    signup(name, email, password, () => history.push('/'))
   }
 
   return (

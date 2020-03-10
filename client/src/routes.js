@@ -12,17 +12,23 @@ const Routes = ({ isLoggedIn, loadInitialData }) => {
 
   return (
     <Switch>
+      <Route exact path="/">
+        {isLoggedIn ? <Home /> : <Redirect to="/login" />}
+      </Route>
+      <Route exact path="/transactions">
+        {isLoggedIn ? <Transactions /> : <Redirect to="/login" />}
+      </Route>
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/register" component={RegisterForm} />
-      {isLoggedIn ? (
+      {/* {isLoggedIn ? (
         <Switch>
-          <Route exact path="/home" component={Home} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/transactions" component={Transactions} />
           <Route component={Home} />
         </Switch>
       ) : (
         <Route component={LoginForm} />
-      )}
+      )} */}
     </Switch>
   )
 }

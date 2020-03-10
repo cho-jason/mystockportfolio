@@ -12,7 +12,7 @@ const LoginForm = ({ login }) => {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    login(email, password, () => history.push('/home'))
+    login(email, password, () => history.push('/'))
   }
 
   return (
