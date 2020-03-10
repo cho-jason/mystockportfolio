@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
-import { LoginForm, RegisterForm, Home, Transactions } from './components'
+import {
+  LoginForm,
+  RegisterForm,
+  Home,
+  Transactions,
+  PageNotFound
+} from './components'
 import { getUser } from './store'
 
 const Routes = ({ isLoggedIn, loadInitialData }) => {
@@ -20,6 +26,7 @@ const Routes = ({ isLoggedIn, loadInitialData }) => {
       </Route>
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/register" component={RegisterForm} />
+      <Route component={PageNotFound} />
     </Switch>
   )
 }
