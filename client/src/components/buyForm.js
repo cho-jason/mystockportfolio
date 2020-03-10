@@ -28,7 +28,7 @@ const BuyForm = ({ user, lastTransaction, purchaseStock, stopTransaction }) => {
     <div id="buy">
       <h2>Buy Stock</h2>
       <p>
-        <strong>Available Balance:</strong> ${user.balance / 100}
+        <strong>Available Balance:</strong> ${(user.balance / 100).toFixed(2)}
       </p>
       <form onSubmit={handleSubmit}>
         <div className="input">
