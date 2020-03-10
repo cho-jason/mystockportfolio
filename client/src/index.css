@@ -84,10 +84,6 @@ nav > div {
   justify-content: flex-end;
 }
 
-nav > div > a {
-  padding: 0em 1em;
-}
-
 nav > h1 {
   font-size: 1.2em;
   margin: 0;
@@ -95,12 +91,26 @@ nav > h1 {
 }
 
 a {
+  padding: 0;
+  margin: 0 1em;
   color: #198cff;
   text-decoration: none;
 }
 
 .selected {
   font-weight: bolder;
+}
+
+.link-button {
+  background-color: transparent;
+  color: #198cff;
+  border: none;
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 1em;
+  display: inline;
+  margin: 0 1em 0.2em;
+  padding: 0;
 }
 
 /* Home */

@@ -20,9 +20,9 @@ const Navbar = ({ isLoggedIn, logout }) => {
           <NavLink to="/transactions" activeClassName="selected">
             Transactions
           </NavLink>
-          <a href="#" onClick={handleClick}>
+          <button className="link-button" onClick={handleClick}>
             Log Out
-          </a>
+          </button>
         </div>
       ) : (
         <div>
