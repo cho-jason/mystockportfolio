@@ -1,0 +1,44 @@
+#portfolio {
+  flex-basis: 40em;
+  padding: 0em 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#portfolio > div {
+  font-size: 1.1em;
+  padding: 0.5em;
+  border-color: #d0d0cf;
+  border-width: thin;
+  border-style: none none solid;
+  display: flex;
+  justify-content: space-between;
+}
+
+#portfolio > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#portfolio > div > div > p {
+  align-self: flex-start;
+  margin: 1em 0 0;
+}
+
+.stock-info {
+  margin: 0.5em 0 1em;
+}
+
+.increase {
+  color: green;
+}
+
+.decrease {
+  color: red;
+}
+
+.equal {
+  color: gray;
+}

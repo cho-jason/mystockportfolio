@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { purchaseStock, stopTransaction } from '../store'
+import './buyForm.css'
 
 const BuyForm = ({ user, lastTransaction, purchaseStock, stopTransaction }) => {
   // STATE

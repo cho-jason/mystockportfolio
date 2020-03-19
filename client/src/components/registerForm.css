@@ -1,0 +1,52 @@
+#register {
+  background-color: #ededed;
+  /* Positioning */
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  /* Size */
+  width: 30em;
+  /* Border */
+  border-color: #d0d0cf;
+  border-width: thin;
+  border-style: solid;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1em 2em 1em;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+label {
+  font-size: 1em;
+  padding: 0 0 0.5em;
+  align-self: flex-start;
+}
+input {
+  font-size: 1em;
+  margin: 0 0 1em;
+  padding: 0.5em;
+  color: #666666;
+  border: thin solid #d0d0cf;
+}
+
+button {
+  align-self: center;
+  font-size: 1em;
+  font-weight: bold;
+  color: #fff;
+  width: 50%;
+  border-radius: 0.1rem;
+  margin: 1em;
+  padding: 0.5em 1em;
+  border: 0;
+  background-color: #198cff;
+}

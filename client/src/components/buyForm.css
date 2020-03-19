@@ -1,0 +1,8 @@
+#buy {
+  flex-basis: 40em;
+  padding: 0em 5em;
+}
+
+#buy > p {
+  font-size: 1.1em;
+}

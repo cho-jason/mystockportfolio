@@ -1,5 +1,6 @@
 import React from 'react'
 import { Portfolio, BuyForm } from '.'
+import './home.css'
 
 const Home = () => {
   return (

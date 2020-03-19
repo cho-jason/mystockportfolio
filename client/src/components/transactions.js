@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getTransactions } from '../store'
 import { getDate } from '../util'
+import './transactions.css'
 
 const Transactions = ({ userId, transactions, getTransactions }) => {
   // EFFECTS

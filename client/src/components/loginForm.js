@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { login } from '../store'
+import './loginForm.css'
 
 const LoginForm = ({ errorMessage, login }) => {
   const history = useHistory()

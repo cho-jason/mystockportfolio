@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getStocks } from '../store'
+import './portfolio.css'
 
 const Portfolio = ({ userId, stocks, getStocks }) => {
   // EFFECTS
