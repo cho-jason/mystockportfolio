@@ -1,8 +1,24 @@
 #buy {
-  flex-basis: 40em;
-  padding: 0em 5em;
+  width: 40%;
+  max-width: 550px;
+  padding: 1em 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #buy > p {
   font-size: 1.1em;
+}
+
+#buy form {
+  padding: 0;
+  width: 100%;
+  max-width: 400px;
+}
+
+@media only screen and (max-width: 900px) {
+  #buy {
+    width: 80%;
+  }
 }
